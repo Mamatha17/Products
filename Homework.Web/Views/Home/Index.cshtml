@@ -1,0 +1,50 @@
+﻿@model Homework.Web.Models.ProductData
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Products</h1>
+</div>
+
+<div class="container mb-3">
+    <div class="row">
+        <div class="col">
+            <p class="h5">Trending Product: @Model.TrendingProduct</p>
+        </div>
+        <div class="col">
+            <div class="float-end search_box">
+                <div class="search_field">
+                    <input id="search" type="search" placeholder="Search" onkeyup="search()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay justify-content-center" id="spinner" style="display: none;">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    @foreach (var item in @Model.Products)
+    {
+        <div class="col product-box">
+            <div class="border-dark card rounded-0">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <div class="row mt-4">
+                        <div class="col-9">
+                            <span class="card-text">@item.Brand</span>
+                        </div>
+                        <div class="col-3">
+                            <span class="card-text float-end">@item.Price€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
